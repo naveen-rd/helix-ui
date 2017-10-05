@@ -75,7 +75,7 @@
   margin: 0 @row-margin -(@grid-gutter-size);
   padding: 0;
 
-  & + & {
+  & + &:not(.no-gutters) {
     margin-top: @grid-gutter-size;
   }
 

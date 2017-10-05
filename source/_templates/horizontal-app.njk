@@ -1,0 +1,16 @@
+{% extends 'base-app.njk' %}
+{% block appLayout %}
+  <main class="hxApp__content--horizontal">
+    {% block pageLayout %}
+      {% block content %}
+        {# Page content goes here #}
+      {% endblock %}
+    {% endblock %}
+  </main>
+{% endblock %}
+
+{% block leftNav %}
+  <nav class="hxApp__nav--scroll">
+    {% include 'partials/app_nav.njk' %}
+  </nav>
+{% endblock %}

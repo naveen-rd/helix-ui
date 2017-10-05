@@ -1,0 +1,51 @@
+---
+title: Global Layout
+assets:
+  - helix-ui.css
+---
+{% extends 'component-page.njk' %}
+{% block content %}
+  <h2 class="">Basic Structure</h2>
+  {% code 'html' %}
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{data.cdn.stable.url}}/{{data.cdn.stable.css.helixUi}}">
+
+        <!-- ES5 Adapter -->
+        <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.es5adapter}}"></script>
+        <!-- Polyfill Loader -->
+        <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.polyfillLoader}}"></script>
+      </head>
+      <body class="hxApp" id="top">
+        <header class="hxApp__header">
+          <!-- Pilot Lives Here -->
+        </header>
+
+        <div class="hxApp__container">
+          <main class="hxApp__content">
+            <!-- Page Content Goes Here -->
+          </main>
+
+          <nav class="hxApp__nav">
+            <!-- Left-hand Nav Goes Here -->
+          </nav>
+        </div>
+
+        <footer class="hxApp__footer">
+          &copy; 2017 Rackspace US, Inc.
+          <nav>
+            <a href="https://www.rackspace.com/information/legal/websiteterms">Website Terms</a>
+            <a href="https://www.rackspace.com/information/legal/privacystatement">Privacy Policy</a>
+          </nav>
+        </footer>
+
+        <script src="{{data.cdn.stable.url}}/{{data.cdn.stable.js.helixUi}}"></script>
+      </body>
+    </html>
+  {% endcode %}
+{% endblock %}

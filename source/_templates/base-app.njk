@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{site.language}}">
+{% include 'partials/head.njk' %}
+<body class="hxApp" id="top">
+{% block globalLayout %}
+<header class="hxApp__header">
+  {% block appHeader %}
+    {% include 'partials/global_nav.njk' %}
+  {% endblock %}
+</header>
+
+<div class="hxApp__container">
+{% block appLayout %}
+  <main class="hxApp__content">
+    {% block pageLayout %}
+      {% block content %}
+        <!-- Page content goes here -->
+      {% endblock %}
+    {% endblock %}
+  </main>
+{% endblock %}
+{% block leftNav %}
+  <nav class="hxApp__nav">
+    {% include 'partials/app_nav.njk' %}
+  </nav>
+{% endblock %}
+</div>
+
+<footer class="hxApp__footer">
+{% block appFooter %}
+  {% include 'partials/footer_nav.njk' %}
+{% endblock %}
+</footer>
+{% endblock %}
+
+{% include 'partials/after_footer.njk' %}
+</body>
+</html>

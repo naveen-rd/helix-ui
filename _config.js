@@ -34,7 +34,8 @@ CONFIG.site = {
 CONFIG.less = {
     paths: [
         `${CONFIG.sourceDir}/_less`,
-        `${CONFIG.sourceDir}/components`
+        `${CONFIG.sourceDir}/components`,
+        `${CONFIG.sourceDir}/layouts`
     ],
     files: [
         `${CONFIG.sourceDir}/helix-ui.less`,
@@ -60,7 +61,8 @@ CONFIG.docs = {
     files: [
         'index.html',
         'components/**/index.html',
-        'guides/**/index.html'
+        'guides/**/index.html',
+        'layouts/**/*.html',
     ],
     // settings for deployment to github pages
     ghPages: {

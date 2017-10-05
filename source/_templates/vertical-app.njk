@@ -1,0 +1,10 @@
+{% extends 'base-app.njk' %}
+{% block appLayout %}
+  <main class="hxApp__content">
+    {% block pageLayout %}
+      {% block content %}
+        {# Page content goes here #}
+      {% endblock %}
+    {% endblock %}
+  </main>
+{% endblock %}

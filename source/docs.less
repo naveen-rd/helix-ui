@@ -85,3 +85,16 @@ main {
 @import 'popover/popover-docs';
 @import 'tooltip/tooltip-docs';
 @import 'typography/typography-docs';
+
+// Resize the Helix SVG logo to fit in header.
+.brand-logo {
+  align-items: center;
+  display: flex;
+  height: 3.5rem;
+  justify-content: center;
+  width: @app-nav-width;
+
+  img {
+    height: 2rem;
+  }
+}

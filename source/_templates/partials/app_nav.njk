@@ -1,8 +1,8 @@
 {% macro navSection(category, items, basePath) %}
   {% if _.isUndefined(basePath) %}
-    {% set categoryPath = category %}
+    {% set categoryPath = category.toLowerCase() %}
   {% else %}
-    {% set categoryPath = basePath + '/' + category %}
+    {% set categoryPath = basePath %}
   {% endif %}
   {% set isCurrentCategory = page.path.indexOf(categoryPath) === 0 %}
 
@@ -14,7 +14,7 @@
 
     {% for key,val in items %}
       {% if _.isPlainObject(val) %}
-        {% set subpath = basePath + '/' + key %}
+        {% set subpath = categoryPath + '/' + key %}
         {{ navSection(key, val, subpath) }}
       {% else %}
         {% set linkPath = categoryPath + '/' + val %}
