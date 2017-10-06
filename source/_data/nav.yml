@@ -1,7 +1,6 @@
 guides:
   Installing: install
 layouts:
-  Global: global
   Application: application
   Page: page
 components:
