@@ -1,8 +1,5 @@
 guides:
   Installing: install
-layouts:
-  Application: application
-  Page: page
 components:
   Alert: alert
   Badge: badge
@@ -14,6 +11,7 @@ components:
   Form: form
   Grid: grid
   Icon: icon
+  Layout: layout
   List: list
   Modal: modal
   Navigation: navigation

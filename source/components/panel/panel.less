@@ -4,19 +4,18 @@
 
   // static child (consumer as little space as possible)
   &__header {
-    flex-grow: 0;
     flex-shrink: 0;
   }
 
   // dynamic child (consume as much space as possible)
   &__body {
     flex-grow: 1;
-    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   // static child (consume as little space as possible)
   &__footer {
-    flex-grow: 0;
     flex-shrink: 0;
   }
 }

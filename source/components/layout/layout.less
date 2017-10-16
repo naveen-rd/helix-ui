@@ -1,3 +1,11 @@
+@import (reference) 'grid/grid.less';
+
+// BASE
+html {
+  height: 100%;
+}
+
+// COMPONENT
 .hxApp {
   display: flex;
   flex-direction: column;
@@ -29,7 +37,8 @@
     }
   }
 
-  &__container {
+  &__container, // TODO: remove (deprecated)
+  &__stage {
     display: flex;
     flex-grow: 1;
     flex-shrink: 0;
@@ -48,5 +57,24 @@
   &__content {
     flex-grow: 1;
     padding: 1em;
+  }
+}
+
+// COMPONENT
+.hxApp--horizontal {
+  &:extend(.hxApp);
+  height: 100vh;
+  width: 100vw;
+
+  .hxApp__content {
+    //&:extend(.hxRow); // TODO: tweak grid for this to work
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
   }
 }

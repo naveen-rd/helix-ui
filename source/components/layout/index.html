@@ -1,0 +1,203 @@
+---
+title: Layout
+assets:
+  - helix-ui.css
+---
+{% extends 'component-page.njk' %}
+{% block content %}
+  <section><!-- Vertical Layout -->
+    <h2 id="vertical-layout" class="hxSectionTitle">Vertical Layout</h2>
+    <ul>
+      <li>
+        Use the <code>.hxApp</code> class on <code>&lt;body&gt;</code>.
+      </li>
+      <li>
+        Use this layout if your application content needs to grow vertically
+        (pushing the footer down).
+      </li>
+      <li>
+        <code>.hxApp__content</code> will arrange its contents in a column
+        (normal document flow) with padding applied.
+      </li>
+      <li>
+        <a href="components/layout/vertical-layout-template.html">*Vertical Layout Template</a>
+      </li>
+    </ul>
+    <figure>
+      <figcaption>Abbreviated HTML markup for a vertical application layout</figcaption>
+      {% code 'html' %}
+        <!DOCTYPE html>
+        <html lang="en">
+          <!-- HEAD Goes Here -->
+          <body class="hxApp" id="top">
+            <!-- Eyebrow Goes Here (see Navigation component) -->
+            <!-- STAGE Goes Here -->
+            <!-- FOOTER Goes Here -->
+            <!-- AFTER-FOOTER Goes Here -->
+          </body>
+        </html>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- Horizontal Layout -->
+    <h2 id="horizontal-layout" class="hxSectionTitle">Horizontal Layout</h2>
+    <ul>
+      <li>
+        Use the <code>.hxApp--horizontal</code> class on <code>&lt;body&gt;</code>.
+      </li>
+      <li>
+        Use this layout if your application content needs to grow horizontally
+        (keeping the footer visible at all times).
+      </li>
+      <li>
+        <code>.hxApp__content</code> will arrange its contents in a row without padding.
+      </li>
+      <li>
+        <a href="">*Horizontal Layout Template</a>
+      </li>
+    </ul>
+    <figure>
+      <figcaption>Abbreviated HTML markup for a horizontal application layout</figcaption>
+      {% code 'html' %}
+        <!DOCTYPE html>
+        <html lang="en">
+          <!-- HEAD Goes Here -->
+          <body class="hxApp--horizontal" id="top">
+            <!-- Eyebrow Goes Here (see Navigation component) -->
+            <!-- STAGE Goes Here -->
+            <!-- FOOTER Goes Here -->
+            <!-- AFTER-FOOTER Goes Here -->
+          </body>
+        </html>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- HEAD -->
+    <h2 id="head" class="hxSectionTitle">Head</h2>
+    <figure>
+      <figcaption>Recommended HTML markup for head</figcaption>
+      {% code 'html' %}
+        <head>
+          <title>App Title Goes Here</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+
+          <!-- Helix Styles -->
+          <link rel="stylesheet" href="{{data.url.cdn.stable}}/{{data.cdn.stable.css.helixUi}}">
+          <!-- Applicaton Styles -->
+          <link rel="stylesheet" href="path/to/your/app.css">
+
+          <!-- ES5 Adapter -->
+          <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.es5adapter}}"></script>
+          <!-- Polyfill Loader -->
+          <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.polyfillLoader}}"></script>
+        </head>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- Stage -->
+    <h2 id="stage" class="hxSectionTitle">Stage</h2>
+    <ul>
+      <li>The stage is the area between the Eyebrow and Footer.</li>
+      <li>
+        It houses the application content and an optional left-hand navigation.
+      </li>
+    </ul>
+    <figure>
+      <figcaption>Skeleton HTML markup for the stage container</figcaption>
+      {% code 'html' %}
+        <div class="hxApp__stage">
+          <main class="hxApp__content">
+            <!-- Application content lives here -->
+          </main>
+          <!-- Left Navigation Goes Here (see Navigation component) -->
+        </div>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- Footer -->
+    <h2 id="footer" class="hxSectionTitle">Footer</h2>
+    <p>The footer should be implemented as follows.</p>
+    <figure>
+      <figcaption>HTML markup for the application footer</figcaption>
+      {% code 'html' %}
+        <footer class="hxApp__footer">
+          &copy; 2017 Rackspace US, Inc.
+          <nav>
+            <a href="https://www.rackspace.com/information/legal/websiteterms">Website Terms</a>
+            <a href="https://www.rackspace.com/information/legal/privacystatement">Privacy Policy</a>
+          </nav>
+        </footer>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- After Footer -->
+    <h2 id="after-footer" class="hxSectionTitle">After-Footer</h2>
+    <p>The after footer should be implemented as follows.</p>
+    <ul>
+      <li>
+        The <code>#bottom</code> anchor is necessary for upcoming functionality.
+      </li>
+    </ul>
+    <figure>
+      <figcaption>HTML markup for the after-footer content</figcaption>
+      {% code 'html' %}
+        <!-- Helix Behavior -->
+        <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.helixUi}}"></script>
+        <a id="bottom"></a>
+        <!-- Application Behavior -->
+        <script src="path/to/your/app.js"></script>
+      {% endcode %}
+    </figure>
+  </section>
+
+  <section><!-- CSS Class Reference -->
+    <h2 id="css-class-reference" class="hxSectionTitle">CSS Class Reference</h2>
+    <dl>
+      <dt>.hxApp</dt>
+      <dd>
+        Use on the <code>&lt;body&gt;</code> element to achieve a
+        vertical application layout.<br />
+        <mark>This is used when you need content to grow vertically.</mark>
+      </dd>
+
+      <dt>.hxApp--horizontal</dt>
+      <dd>
+        Use on the <code>&lt;body&gt;</code> element to achieve a
+        horizontal application layout.<br />
+        <mark>This is used when you need content to grow horizontally
+        (e.g. for a two column layout).</mark>
+      </dd>
+
+      <dt>.hxApp__header</dt>
+      <dd>
+        Use on a <code>&lt;header&gt;</code> element that is a child of
+        <code>&lt;body&gt;</code> to apply styles for the Eyebrow.<br />
+        <mark>Pilot lives in this element.</mark>
+      </dd>
+
+      <dt>.hxApp__footer</dt>
+      <dd>
+        Use on a <code>&lt;footer&gt;</code> element that is a child of
+        <code>&lt;body&gt;</code> to apply styles for the global footer.
+      </dd>
+
+      <dt>.hxApp__stage</dt>
+      <dd>
+        Use on a <code>&lt;div&gt;</code> element between <code>.hxApp__header</code>
+        and <code>.hxApp__footer</code>.
+      </dd>
+
+      <dt>.hxApp__content</dt>
+      <dd>
+        Use on a <code>&lt;main&gt;</code> element within <code>.hxApp__stage</code>
+        to house your application content.
+      </dd>
+    </dl>
+  </section>
+{% endblock %}

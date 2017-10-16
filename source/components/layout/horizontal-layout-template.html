@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>YOUR APP TITLE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="{{site.baseHref}}"><!-- CHANGE ME -->
+
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <!-- Helix Styles -->
+  <link rel="stylesheet" href="helix-ui.css"><!-- CHANGE ME to production CDN url -->
+  <!-- Applicaton Styles -->
+  <link rel="stylesheet" href="path/to/your/app.css">
+
+  <!-- ES5 Adapter -->
+  <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.es5adapter}}"></script>
+  <!-- Polyfill Loader -->
+  <script src="{{data.url.cdn.stable}}/{{data.cdn.stable.js.polyfillLoader}}"></script>
+</head>
+<body class="hxApp--horizontal" id="top">
+  <header class="hxApp__header">
+    <!-- Eyebrow Goes Here -->
+  </header>
+
+  <div class="hxApp__container">
+    <main class="hxApp__content">
+      <!-- Application Content Goes Here -->
+
+      <!-- 2-column Example -->
+      <div class="hxCol-8">8 Columns</div>
+      <div class="hxCol-4">4 Columns</div>
+    </main>
+    <nav class="hxApp__nav">
+      <!-- Left Navigation Goes Here (if needed) -->
+    </nav>
+  </div>
+
+  <footer class="hxApp__footer">
+    &copy; 2017 Rackspace US, Inc.
+    <nav>
+      <a href="https://www.rackspace.com/information/legal/websiteterms">Website Terms</a>
+      <a href="https://www.rackspace.com/information/legal/privacystatement">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <!-- Helix Behavior -->
+  <script src="https://2d2bf231b82dfe76fe36-fa12562cfe810d69bedcc36a0ac289ef.ssl.cf1.rackcdn.com/javascript/helix-ui.js"></script>
+  <a id="bottom"></a>
+  <!-- Application Behavior -->
+  <script src="path/to/your/app.js"></script>
+</body>
+</html>
+
