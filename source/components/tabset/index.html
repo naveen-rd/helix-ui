@@ -1,12 +1,13 @@
 ---
 title: Tabset
 assets:
-  - bootstrap.helix.css
+  - helix-ui.css
 ---
 {% extends 'component.njk' %}
 {% block content %}
 <!-- explanation goes here -->
 
+<!--
 <div class="demo">
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#">Home</a></li>
@@ -14,6 +15,18 @@ assets:
     <li role="presentation"><a href="#">Messages</a></li>
     <li role="presentation" class="disabled"><a href="#">Not Available</a></li>
   </ul>
+</div>
+-->
+
+<div class="demo">
+  <hx-tabset>
+    <hx-tab role="heading" slot="tab">Tab 1</hx-tab>
+    <!--< hx-panel role="region" slot="panel">Content 1</hx-panel> -->
+    <hx-tab role="heading" slot="tab">Tab 2</hx-tab>
+    <!-- <hx-panel role="region" slot="panel">Content 2</hx-panel> -->
+    <hx-tab role="heading" slot="tab">Tab 3</hx-tab>
+   <!-- <hx-panel role="region" slot="panel">Content 3</hx-panel> -->
+  <hx-tabset>
 </div>
 
 <!-- TODO: need content in tab body -->
