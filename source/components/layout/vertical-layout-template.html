@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>YOUR APP TITLE</title>
+  <title>Vertical - App Title</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="{{site.baseHref}}"><!-- CHANGE ME -->
@@ -23,18 +23,38 @@
     <!-- Eyebrow Goes Here -->
   </header>
 
-  <div class="hxApp__container">
+  <div class="hxApp__stage">
     <main class="hxApp__content">
-      <!-- Application Content Goes Here -->
-
       <!-- Content with sidebar example -->
-      <div class="hxRow">
-        <div class="hxCol-8">8 Columns</div>
-        <div class="hxCol-4">4 Columns (sidebar)</div>
+      <div class="hxCol-9">
+        <div class="hxContainer">
+          <nav class="hxBreadcrumb">
+            <a href="#">Home</a>
+            <hx-icon class="delimiter" type="angle-right"></hx-icon>
+            <a href="#">Parent</a>
+            <hx-icon class="delimiter" type="angle-right"></hx-icon>
+            <a href="#">Current</a>
+          </nav>
+
+          <h1 class="hxPageTitle">Page Title</h1>
+
+          <p>Page Content</p>
+          <ul>
+            <li>Lengthy content will push the application footer off screen.</li>
+            <li>All content scrolls vertically as a single document.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hxCol-3 hxSidebar">
+        <section class="hxContainer">
+          <p>Sidebar</p>
+        </section>
       </div>
     </main>
     <nav class="hxApp__nav">
-      <!-- Left Navigation Goes Here (if needed) -->
+      <!-- Left Navigation -->
+      {% include 'partials/app_nav.njk' %}
+      <!-- end:Left Navigation -->
     </nav>
   </div>
 

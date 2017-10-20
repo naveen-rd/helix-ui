@@ -3,31 +3,23 @@
     border: 1px dotted @gray-400;
   }
 
-  .hxCol,
-  [class*="hxCol-"] {
+  .hxCol {
     background-clip: content-box;
     background-color: fade(@green-700, 25%);
     font-size: 0.75rem;
   }
 }
 
-.drop-cap {
-  p::first-letter {
-    font-size: 2em;
-    font-weight: 700;
-  }
-}
-
 // Automatically Set Column Content based on breakpoint (lg-2, md-8, etc.)
 .demoColumns (@prefix, @n) when (@n > 0) and (@prefix = xs) {
   .demoCol.hxCol-@{n}::before {
-    content: '@{prefix}-@{n}';
+    content: '@{n}-@{prefix}';
   }
   .demoColumns(@prefix, @n - 1);
 }//.demoColumns()
 .demoColumns (@prefix, @n) when (@n > 0) and not (@prefix = xs) {
-  .demoCol.hxCol-@{prefix}-@{n}::before {
-    content: '@{prefix}-@{n}';
+  .demoCol.hxCol-@{n}-@{prefix}::before {
+    content: '@{n}-@{prefix}';
   }
   .demoColumns(@prefix, @n - 1);
 }//.demoColumns()
@@ -75,5 +67,4 @@
   border-radius: 0;
   border: 1px solid @cyan-500;
   height: 100%;
-  padding: 1em 0.5em;
 }

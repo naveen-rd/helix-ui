@@ -1,19 +1,16 @@
 {% extends 'vertical-app.njk' %}
 {% block pageLayout %}
-  <article>
-    <h1 class="hxPageTitle">
-      {{ page.title }}
-    </h1>
-
-    <div class="hxRow">
-      <div class="hxCol-xs-12 hxCol-md-3 hxOrder-md-2">
-        {% include 'partials/sidebar.njk' %}
-      </div>
-      <div class="hxCol-xs-12 hxCol-md-9 hxOrder-1">
-        {% block content %}
-          {# page content goes here #}
-        {% endblock %}
-      </div>
+  <div class="hxCol hxCol-12 hxCol-3-md hxOrder-2 hxSidebar">
+    <div class="hxContainer">
+      {% include 'partials/sidebar.njk' %}
     </div>
-  </article>
+  </div>
+  <div class="hxCol hxCol-12 hxCol-9-md hxOrder-1">
+    <div class="hxContainer">
+      <h1 class="hxPageTitle">{{ page.title }}</h1>
+      {% block content %}
+        {# page content goes here #}
+      {% endblock %}
+    </div>
+  </div>
 {% endblock %}

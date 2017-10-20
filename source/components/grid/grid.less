@@ -1,48 +1,71 @@
+// GRID CONFIG
+@col-padding: (@grid-gutter-size * 0.5);
+@row-margin: -(@col-padding);
+
 // ----- GRID MIXINS ----- //
-//e.g. .hxCol-1, .hxCol-md-8, .hxCol-lg-12
+#grid {
+  .column() {
+    padding: 0 @col-padding;
+    margin: 0 0 @grid-gutter-size;
+  }
+
+  .colSpan (@n) {
+    @basis: (@n * @grid-column-unit);
+    flex: 0 0 @basis;
+    max-width: @basis;
+  }
+
+  .colOffset (@n) {
+    margin-left: (@n * @grid-column-unit) !important;
+  }
+}
+
+// hxCol-{N}-xs
+// hxCol-{N}
 .make-grid-columns (@prefix, @n) when (@n > 0) and (@prefix = xs) {
-  .hxCol-@{prefix}-@{n},
+  .hxCol-@{n}-@{prefix},
   .hxCol-@{n} {
-    @width: (@n * @grid-column-unit);
-    flex: 0 0 @width;
-    max-width: @width;
+    #grid.colSpan(@n);
   }
   .make-grid-columns(@prefix, (@n - 1));
 }
+// hxCol-{N}-{breakpoint}
 .make-grid-columns (@prefix, @n) when (@n > 0) and not (@prefix = xs) {
-  .hxCol-@{prefix}-@{n} {
-    @width: (@n * @grid-column-unit);
-    flex: 0 0 @width;
-    max-width: @width;
+  .hxCol-@{n}-@{prefix} {
+    #grid.colSpan(@n);
   }
   .make-grid-columns(@prefix, (@n - 1));
 }
 
-//e.g. .hxOffset-1, .hxOffset-md-3, .hxOffset-lg-0
+// hxOffset-{N}-xs
+// hxOffset-{N}
 .make-grid-offsets (@prefix, @n) when (@n >= 0) and (@prefix = xs) {
-  .hxOffset-@{prefix}-@{n},
+  .hxOffset-@{n}-@{prefix},
   .hxOffset-@{n} {
-    margin-left: (@n * @grid-column-unit) !important;
+    #grid.colOffset(@n);
   }
   .make-grid-offsets(@prefix, (@n - 1));
 }
+// hxOffset-{N}-{breakpoint}
 .make-grid-offsets (@prefix, @n) when (@n >= 0) and not (@prefix = xs) {
-  .hxOffset-@{prefix}-@{n} {
-    margin-left: (@n * @grid-column-unit) !important;
+  .hxOffset-@{n}-@{prefix} {
+    #grid.colOffset(@n);
   }
   .make-grid-offsets(@prefix, (@n - 1));
 }
 
-//e.g. .hxOrder-1, .hxOrder-md-4
+// hxOrder-{N}-xs
+// hxOrder-{N}
 .make-grid-orders (@prefix, @n) when (@n > 0) and (@prefix = xs) {
-  .hxOrder-@{prefix}-@{n},
+  .hxOrder-@{n}-@{prefix},
   .hxOrder-@{n} {
     order: @n;
   }
   .make-grid-orders(@prefix, (@n - 1));
 }
+// hxOrder-{N}-{breakpoint}
 .make-grid-orders (@prefix, @n) when (@n > 0) and not (@prefix = xs) {
-  .hxOrder-@{prefix}-@{n} {
+  .hxOrder-@{n}-@{prefix} {
     order: @n;
   }
   .make-grid-orders(@prefix, (@n - 1));
@@ -58,16 +81,16 @@
 }
 //end:mixins
 
-/* ===== GRID ===== */
+// ===== GRID ===== //
 @col-padding: (@grid-gutter-size * 0.5);
 @row-margin: -(@col-padding);
 
-.hxCol,
-[class*="hxCol-"] {
+.hxCol {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
+
 .hxRow {
   border: 0;
   display: flex;
@@ -75,28 +98,31 @@
   margin: 0 @row-margin -(@grid-gutter-size);
   padding: 0;
 
-  & + &:not(.no-gutters) {
+  & + & {
     margin-top: @grid-gutter-size;
   }
 
-  .hxCol,
-  [class*="hxCol-"] {
-    padding: 0 @col-padding;
-    margin: 0 0 @grid-gutter-size;
+  & > .hxCol {
+    #grid.column();
   }
 
-  &.no-gutters {
-    margin-left: 0;
-    margin-right: 0;
+  &:only-child {
+    flex-grow: 1;
+  }
 
-    .hxCol,
-    [class*="hxCol-"] {
-      margin: 0;
-      padding-left: 0;
-      padding-right: 0;
+  &.hxGutterless {
+    margin: 0;
+
+    & > .hxRow + .hxRow {
+      margin-top: 0;
     }
-  }
-}
+
+    & > .hxCol {
+      margin: 0;
+      padding: 0;
+    }
+  }//.hxGutterless
+}//.hxRow
 
 @media (min-width: @grid-break-wrist) {
   .make-grid(xs);
@@ -113,4 +139,4 @@
 @media (min-width: @grid-break-wall) {
   .make-grid(xl);
 }
-/* ===== end:GRID ===== */
+//end:GRID
