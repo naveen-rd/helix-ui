@@ -2,6 +2,7 @@
 title: Tabset
 assets:
   - helix-ui.css
+  - helix-ui.js
 ---
 {% extends 'component.njk' %}
 {% block content %}
@@ -20,14 +21,14 @@ assets:
 
 <div class="demo">
   <hx-tabset>
-    <hx-tab role="heading" slot="tab">Tab 1</hx-tab>
-    <!--< hx-panel role="region" slot="panel">Content 1</hx-panel> -->
-    <hx-tab role="heading" slot="tab">Tab 2</hx-tab>
-    <!-- <hx-panel role="region" slot="panel">Content 2</hx-panel> -->
-    <hx-tab role="heading" slot="tab">Tab 3</hx-tab>
-   <!-- <hx-panel role="region" slot="panel">Content 3</hx-panel> -->
-  <hx-tabset>
+    <div id="tabbar">
+      <span class="active">Tab 1</span>
+      <span>Tab 2</span>
+      <span>Tab 3</span>
+    </div>
+    <hx-tab open>Content 1</hx-tab>
+    <hx-tab>Content 2</hx-tab> 
+    <hx-tab>Content 3</hx-tab> 
+  </hx-tabset>
 </div>
-
-<!-- TODO: need content in tab body -->
 {% endblock %}

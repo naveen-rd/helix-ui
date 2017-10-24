@@ -1,6 +1,23 @@
-hx-tab {
+@import 'vars';
+
+hx-tabset {
+  span {
+    padding: 12px 12px 8px;
+
+    &:hover {
+      color: @cyan-500;
+      cursor: pointer;
+    }
+
+    &:active {
+      color: @cyan-700;
+    }
+
+    &.active {
+      border: 1px solid @gray-300;
+      border-bottom: none;
+      color: @cyan-900;
+    }
+  }
 }
-hx-panel {
-}
-hx-tab[selected] {
-}
+
