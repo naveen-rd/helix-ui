@@ -8,27 +8,69 @@ assets:
 {% block content %}
 <!-- explanation goes here -->
 
-<!--
-<div class="demo">
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
-    <li role="presentation" class="disabled"><a href="#">Not Available</a></li>
-  </ul>
-</div>
--->
-
+<section>
+<h2 class="hxSectionTitle" id="default-tabset">Default Tabset</h2>
 <div class="demo">
   <hx-tabset>
-    <div id="tabbar">
-      <span class="active">Tab 1</span>
-      <span>Tab 2</span>
-      <span>Tab 3</span>
-    </div>
-    <hx-tab open>Content 1</hx-tab>
-    <hx-tab>Content 2</hx-tab> 
-    <hx-tab>Content 3</hx-tab> 
+    <a href="#" class="hxTab" slot="tab">Tab 1</a>
+    <a href="#" class="hxTab" slot="tab">Tab 2</a>
+    <a href="#" class="hxTab" slot="tab">Tab 3</a>
+    <hx-tabpanel id="a">Content 1</hx-tabpanel>
+    <hx-tabpanel id="b">Content 2</hx-tabpanel> 
+    <hx-tabpanel id="c">Content 3</hx-tabpanel> 
   </hx-tabset>
 </div>
+{% code 'html' %}
+  <hx-tabset>
+    <a href="#" class="hxTab" slot="tab">Tab 1</a>
+    <a href="#" class="hxTab" slot="tab">Tab 2</a>
+    <a href="#" class="hxTab" slot="tab">Tab 3</a>
+    <hx-tabpanel id="a">Content 1</hx-tabpanel>
+    <hx-tabpanel id="b">Content 2</hx-tabpanel> 
+    <hx-tabpanel id="c">Content 3</hx-tabpanel> 
+  </hx-tabset>
+{% endcode %}
+</section>
+
+<section>
+<h2 class="hxSectionTitle" id="white-bg-tabset">White Background Tabset</h2>
+<div class="demo">
+  <hx-tabset class="hx-gray-0">
+    <a href="#" class="hxTab" slot="tab">Tab 1</a>
+    <a href="#" class="hxTab" slot="tab">Tab 2</a>
+    <a href="#" class="hxTab" slot="tab">Tab 3</a>
+    <hx-tabpanel id="d">Content 1</hx-tabpanel>
+    <hx-tabpanel id="e">Content 2</hx-tabpanel> 
+    <hx-tabpanel id="f">Content 3</hx-tabpanel> 
+  </hx-tabset>
+</div>
+{% code 'html' %}
+  <hx-tabset class="hx-gray-0">
+    <a href="#" class="hxTab" slot="tab">Tab 1</a>
+    <a href="#" class="hxTab" slot="tab">Tab 2</a>
+    <a href="#" class="hxTab" slot="tab">Tab 3</a>
+    <hx-tabpanel id="d">Content 1</hx-tabpanel>
+    <hx-tabpanel id="e">Content 2</hx-tabpanel> 
+    <hx-tabpanel id="f">Content 3</hx-tabpanel> 
+  </hx-tabset>
+{% endcode %}
+</section>
+
+<section>
+  <h2 class="hxSectionTitle" id="attributes">Attributes</h2>
+  <dl>
+    <dt>selected</dt>
+    <dd>Selects the tab and panel</dd>
+  </dl>
+</section>
+
+<section>
+  <h2 class="hxSectionTitle" id="properties">Properties</h2>
+  <dl>
+    <dt>panels <small>(read-only) Array&lt;Element&gt;</small></dt>
+    <dt>selected</dt>
+    <dd>Determines if tab and panel is selected</dd>
+    <dt>tabs <small>(read-only) Array&lt;Element&gt;</small></dt>
+  </dl>
+</section>
 {% endblock %}

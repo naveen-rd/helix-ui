@@ -1,13 +1,15 @@
 window.addEventListener('WebComponentsReady', function () {
-    const tagName = 'hx-tab';
+    const tagName = 'hx-tabpanel';
     const template = document.createElement('template');
 
     template.innerHTML = `
-        <style>${require('../reveal/HxReveal.less')}</style>
-        ${require('../reveal/HxReveal.html')}
+        <style>${require('./HxTabpanel.less')}</style>
+        <hx-reveal no-summary>
+            <slot></slot>
+        </hx-reveal>
     `;
 
-    class HxTab extends HTMLElement {
+    class HxTabpanel extends HTMLElement {
         static get is () {
             return tagName;
         }
@@ -24,23 +26,12 @@ window.addEventListener('WebComponentsReady', function () {
                 ShadyCSS.styleElement(this);
             }
             this.shadowRoot.appendChild(template.content.cloneNode(true));
-            this._btnToggle = this.shadowRoot.querySelector('#toggle');
-            this._toggle = this._toggle.bind(this);
-        }
-
-        connectedCallback () {
-            // set proper role attribute
-            this._btnToggle.addEventListener('click', this._toggle);
-        }
-
-        disconnectedCallback () {
-            this._btnToggle.removeEventListener('click', this._toggle);
+            this._reveal = this.shadowRoot.querySelector('hx-reveal');
         }
 
         attributeChangedCallback (attr, oldValue, newValue) {
-            if (attr === 'open') {
-                this._btnToggle.setAttribute('aria-expanded', newValue === '');
-            }
+            const hasValue = newValue !== null;
+            this._reveal.open = hasValue;
         }
 
         set open (value) {
@@ -54,10 +45,6 @@ window.addEventListener('WebComponentsReady', function () {
         get open () {
             return this.hasAttribute('open');
         }
-
-        _toggle () {
-            this.open = !this.open;
-        }
      }
-    customElements.define(HxTab.is, HxTab)
+    customElements.define(HxTabpanel.is, HxTabpanel)
 });

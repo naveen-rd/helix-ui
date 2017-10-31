@@ -3,10 +3,9 @@ window.addEventListener('WebComponentsReady', function () {
     const template = document.createElement('template');
 
     template.innerHTML = `
-      <style>${require('./HxTabset.less')}</style>
-      ${require('./HxTabset.html')}
+        <style>:host{display: block;}</style>
+        ${require('./HxTabset.html')}
     `;
-
 
     class HxTabset extends HTMLElement {
         static get is () {
@@ -17,54 +16,87 @@ window.addEventListener('WebComponentsReady', function () {
             super();         
             this.attachShadow({mode: 'open'});
             if (window.ShadyCSS) {
-                ShadyCSS.prepareTemplate(template, 'hx-tabset');
+                ShadyCSS.prepareTemplate(template, tagName);
                 ShadyCSS.styleElement(this);
             }
             this.shadowRoot.appendChild(template.content.cloneNode(true));
-            this._tabClick = this.shadowRoot.querySelector('#head');            
+            this.$head = this.shadowRoot.querySelector('#head');            
             this._onHeadClick = this._onHeadClick.bind(this);
         }
 
         connectedCallback () {
-            // attach a click listener on the head point to _onHeadClick
-            this._tabClick.addEventListener('click', this._onHeadClick);
+            this.$head.addEventListener('click', this._onHeadClick);
             
             if (!this.hasAttribute('role')) {
                 this.setAttribute('role', 'tabset');
             }
+
+            if (!this.hasAttribute('selected')) {
+                this._selectPanelByIndex(0);            
+            }
         }
 
         disconnectedCallback () {
+            this.$head.removeEventListener('click', this._onHeadClick);            
         }
 
-        attributeChangedCallback() {
+        attributeChangedCallback (attr, oldValue, newValue) {
+            this._selectPanelById(newValue);
+        }
+
+        static get observedAttributes() {
+            return ['selected'];
+        }
+
+        get selected () {
+            return this.getAttribute('selected');
+        }
+
+        set selected (id) {
+            if (this.querySelector(`hx-tabpanel#${id}`)) {
+                this.setAttribute('selected', id);
+            } else {
+                throw new Error(`Tab with id "${id}" not found`);
+            }
         }
 
         get tabs () {
-            return Array.from(this.querySelectorAll(`span`));
+            return Array.from(this.querySelectorAll(`a`));
          }
 
         get panels () {
-            return Array.from(this.querySelectorAll('hx-tab'));
-         }
+            return Array.from(this.querySelectorAll('hx-tabpanel'));
+        }
 
-        _onHeadClick(event) {
-            // iterate over head children with index
-            // as iterate, set the tab and appro panel to the appro state
-            // array reference of all panels in the body
-            // labels[i] and panels[i]
-            this.tabs.forEach((tab, index) => {
-                // check if event target is that tab
-                // if it is that tab, active the tab and content
-                // otherwise deactivate
-                if (event.target === tab) {
-                    tab.classList.add('active');
-                    this.panels[index].open = true;
-                } else {
-                tab.classList.remove('active');
-                this.panels[index].open = false;
-                }
-            });
+        _selectPanelById (id) {
+            this._selectPanel(this.querySelector(`hx-tabpanel#${id}`));
+        }
+
+        _selectPanelByIndex (idx) {
+            if (idx < 0) {
+                throw new Error(`Panel index out of bounds`);
+            } else {
+                this._selectPanel(this.panels[idx]);
+            }
+        }
+
+        _selectPanel (panel) {
+            if (panel) {
+                this._reset();
+                panel.open = true;
+                var selectedIndex = this.panels.indexOf(panel);
+                this.tabs[selectedIndex].classList.add('active');
+            }
+        }
+
+        _reset () {
+            this.panels.forEach(panel => panel.open = false);
+            this.tabs.forEach(tab => tab.classList.remove("active"));
+        }
+        
+        _onHeadClick (event) {
+            event.preventDefault();
+            this._selectPanelByIndex(this.tabs.indexOf(event.target));
         }
     }
     customElements.define(HxTabset.is, HxTabset)
