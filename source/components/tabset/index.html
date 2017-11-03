@@ -12,22 +12,32 @@ assets:
 <h2 class="hxSectionTitle" id="default-tabset">Default Tabset</h2>
 <div class="demo">
   <hx-tabset>
-    <a href="#" class="hxTab" slot="tab">Tab 1</a>
-    <a href="#" class="hxTab" slot="tab">Tab 2</a>
-    <a href="#" class="hxTab" slot="tab">Tab 3</a>
-    <hx-tabpanel id="a">Content 1</hx-tabpanel>
-    <hx-tabpanel id="b">Content 2</hx-tabpanel> 
-    <hx-tabpanel id="c">Content 3</hx-tabpanel> 
+    <div slot="tab">
+      <a href="#" class="hxTab">Tab 1</a>
+      <a href="#" class="hxTab">Tab 2</a>
+      <a href="#" class="hxTab">Tab 3</a>
+    </div>
+
+    <hx-tabpanel id="a">
+      <p>
+        If we open about the iterations, we can get the design simplicity underneath the XP bug. Selecting the impediments should allow our kanban to practice the business requirement into the product backlog. If we launch toward the sprints, we can get the maintainable standup under the XP epic. If we refactor to the trends, we can get the patch-level epic below the MVP lifecycle management.
+      </p>
+      <p>
+        Given vanity branches, nearly adjusting the relative deadline into the fail-fast deadlines will almost estimate the maintainable planning poker. Try to review the continuous lifecycle, maybe it will help refactor the MVP meetings. A simple task always takes less time than a design one. We must perfectly review the many MVP automation! We must appropriately satify the visible PR relationship! We must efficiently join the domain MVP task!
+      </p>
+    </hx-tabpanel>
+    <hx-tabpanel id="b">Content 2</hx-tabpanel>
+    <hx-tabpanel id="c">Content 3</hx-tabpanel>
   </hx-tabset>
 </div>
 {% code 'html' %}
   <hx-tabset>
-    <a href="#" class="hxTab" slot="tab">Tab 1</a>
-    <a href="#" class="hxTab" slot="tab">Tab 2</a>
-    <a href="#" class="hxTab" slot="tab">Tab 3</a>
-    <hx-tabpanel id="a">Content 1</hx-tabpanel>
-    <hx-tabpanel id="b">Content 2</hx-tabpanel> 
-    <hx-tabpanel id="c">Content 3</hx-tabpanel> 
+    <a href="#" slot="tab" class="hxTab active">Tab 1</a>
+    <a href="#" slot="tab" class="hxTab">Tab 2</a>
+    <a href="#" slot="tab" class="hxTab">Tab 3</a>
+    <hx-tabpanel id="a" open>Content 1</hx-tabpanel>
+    <hx-tabpanel id="b">Content 2</hx-tabpanel>
+    <hx-tabpanel id="c">Content 3</hx-tabpanel>
   </hx-tabset>
 {% endcode %}
 </section>
@@ -40,8 +50,8 @@ assets:
     <a href="#" class="hxTab" slot="tab">Tab 2</a>
     <a href="#" class="hxTab" slot="tab">Tab 3</a>
     <hx-tabpanel id="d">Content 1</hx-tabpanel>
-    <hx-tabpanel id="e">Content 2</hx-tabpanel> 
-    <hx-tabpanel id="f">Content 3</hx-tabpanel> 
+    <hx-tabpanel id="e">Content 2</hx-tabpanel>
+    <hx-tabpanel id="f">Content 3</hx-tabpanel>
   </hx-tabset>
 </div>
 {% code 'html' %}
@@ -50,8 +60,8 @@ assets:
     <a href="#" class="hxTab" slot="tab">Tab 2</a>
     <a href="#" class="hxTab" slot="tab">Tab 3</a>
     <hx-tabpanel id="d">Content 1</hx-tabpanel>
-    <hx-tabpanel id="e">Content 2</hx-tabpanel> 
-    <hx-tabpanel id="f">Content 3</hx-tabpanel> 
+    <hx-tabpanel id="e">Content 2</hx-tabpanel>
+    <hx-tabpanel id="f">Content 3</hx-tabpanel>
   </hx-tabset>
 {% endcode %}
 </section>
