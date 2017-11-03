@@ -3,7 +3,9 @@ window.addEventListener('WebComponentsReady', function () {
     const template = document.createElement('template');
 
     template.innerHTML = `
-        <style>:host{display: block;}</style>
+        <style>
+            :host{display: block;
+        }</style>
         ${require('./HxTabset.html')}
     `;
 
@@ -26,7 +28,6 @@ window.addEventListener('WebComponentsReady', function () {
 
         connectedCallback () {
             this.$head.addEventListener('click', this._onHeadClick);
-            
             if (!this.hasAttribute('role')) {
                 this.setAttribute('role', 'tabset');
             }
@@ -44,7 +45,7 @@ window.addEventListener('WebComponentsReady', function () {
             this._selectPanelById(newValue);
         }
 
-        static get observedAttributes() {
+        static get observedAttributes () {
             return ['selected'];
         }
 

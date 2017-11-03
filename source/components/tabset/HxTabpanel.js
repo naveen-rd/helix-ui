@@ -4,7 +4,6 @@ window.addEventListener('WebComponentsReady', function () {
 
     template.innerHTML = `
       <style>
-          ${require('../reveal/HxReveal.less')}
           ${require('./HxTabpanel.less')}
       </style>
       ${require('../reveal/HxReveal.html')}
