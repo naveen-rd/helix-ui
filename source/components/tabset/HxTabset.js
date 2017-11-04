@@ -3,9 +3,7 @@ window.addEventListener('WebComponentsReady', function () {
     const template = document.createElement('template');
 
     template.innerHTML = `
-        <style>
-            :host{display: block;
-        }</style>
+        <style>${require('./HxTabset.less')}</style>
         ${require('./HxTabset.html')}
     `;
 
@@ -15,14 +13,14 @@ window.addEventListener('WebComponentsReady', function () {
         }
 
         constructor () {
-            super();         
+            super();
             this.attachShadow({mode: 'open'});
             if (window.ShadyCSS) {
                 ShadyCSS.prepareTemplate(template, tagName);
                 ShadyCSS.styleElement(this);
             }
             this.shadowRoot.appendChild(template.content.cloneNode(true));
-            this.$head = this.shadowRoot.querySelector('#head');            
+            this.$head = this.shadowRoot.querySelector('#head');
             this._onHeadClick = this._onHeadClick.bind(this);
         }
 
@@ -33,12 +31,12 @@ window.addEventListener('WebComponentsReady', function () {
             }
 
             if (!this.hasAttribute('selected')) {
-                this._selectPanelByIndex(0);            
+                this._selectPanelByIndex(0);
             }
         }
 
         disconnectedCallback () {
-            this.$head.removeEventListener('click', this._onHeadClick);            
+            this.$head.removeEventListener('click', this._onHeadClick);
         }
 
         attributeChangedCallback (attr, oldValue, newValue) {
@@ -86,15 +84,15 @@ window.addEventListener('WebComponentsReady', function () {
                 this._reset();
                 panel.open = true;
                 var selectedIndex = this.panels.indexOf(panel);
-                this.tabs[selectedIndex].classList.add('active');
+                this.tabs[selectedIndex].classList.add('current');
             }
         }
 
         _reset () {
             this.panels.forEach(panel => panel.open = false);
-            this.tabs.forEach(tab => tab.classList.remove("active"));
+            this.tabs.forEach(tab => tab.classList.remove('current'));
         }
-        
+
         _onHeadClick (event) {
             event.preventDefault();
             this._selectPanelByIndex(this.tabs.indexOf(event.target));

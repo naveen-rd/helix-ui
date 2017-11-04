@@ -1,8 +1,12 @@
 hx-tabset {
-  @background-color: @gray-25;
   display: block;
 
+  [slot="tab"] {
+    background-color: inherit;
+  }
+
   .hxTab {
+    background-color: transparent;
     border: 1px solid transparent;
     bottom: -1px;
     box-sizing: border-box;
@@ -22,9 +26,9 @@ hx-tabset {
       color: @cyan-700;
     }
 
-    &.active {
-      background-color: @background-color;
-      border-color: @gray-300 @gray-300 @background-color;
+    &.current {
+      background-color: inherit;
+      border-color: @gray-300 @gray-300 transparent;
       color: @cyan-900;
     }
   }
@@ -35,18 +39,5 @@ hx-tabset {
 
   hx-tabpanel:not([open]) {
     display: none;
-  }
-}
-
-.hx-gray-0 {
-  hx-tabpanel {
-    background-color: @gray-0;
-  }
-
-  .hxTab {
-    &.active {
-      background-color: @gray-0;
-      border-color: @gray-300 @gray-300 @gray-0;
-    }
   }
 }
