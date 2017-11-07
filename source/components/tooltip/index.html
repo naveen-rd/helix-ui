@@ -1,8 +1,152 @@
 ---
 title: Tooltip
+assets:
+   - helix-ui.css 
+   - helix-ui.js
 ---
 {% extends 'component.njk' %}
 {% block content %}
-<!-- explanation goes here -->
-<p>TBD</p>
+<section>
+  <h2 class="hxSectionTitle" id="tooltip">Tooltip</h2>
+  <div class="demo">
+    <div class="demo-target">
+      Hover or Click Tooltip
+      <hx-icon data-tooltip="tooltip1" type="help-circle"></hx-icon>
+    </div>
+    <hx-tooltip id="tooltip1" position="top-right">
+      I am a hover triggered tooltip
+    </hx-tooltip>
+    <hx-tooltip id="tooltip1" position="bottom-left" trigger="click">
+      I am a click triggered tooltip
+    </hx-tooltip>
+  </div>
+  {% code 'html' %}
+  <div class="demo-target">
+    Hover or Click Tooltip
+    <hx-icon data-tooltip="tooltip1" type="help-circle"></hx-icon>
+  </div>
+  <hx-tooltip id="tooltip1" position="top-right">
+    I am a hover triggered tooltip
+  </hx-tooltip>
+  <hx-tooltip id="tooltip1" position="bottom-left" trigger="click">
+    I am a click triggered tooltip
+  </hx-tooltip>
+    {% endcode %}
+</section>
+<section class="tooltip-examples">
+  <h2 class="hxSectionTitle" id="appearance">Appearance</h2>
+  <table class="hxTable">
+    <thead>
+      <tr>
+        <th>position</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Top</td>
+        <td>
+          <hx-tooltip id="example1" position="top" open>
+            position: top
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example1" position="top-right" open>
+            position: top-right
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example2" position="top-left" open>
+             position: top-left
+          </hx-tooltip>
+        </td>
+      </tr>
+      <tr>
+        <td>Bottom</td>
+        <td>
+          <hx-tooltip id="example3" position="bottom" open>
+            position: bottom
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example3" position="bottom-right" open>
+            position: bottom-right
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example4" position="bottom-left" open>
+            position: bottom-left
+          </hx-tooltip>
+        </td>
+      </tr>
+      <tr>
+        <td>Right</td>
+        <td>
+          <hx-tooltip id="example5" position="right" open>
+            position: right
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example5" position="right-top" open>
+            position: right-top
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example6" position="right-bottom" open>
+            position: right-bottom
+          </hx-tooltip>
+        </td>
+      </tr>
+      <tr>
+        <td>Left</td>
+        <td>
+          <hx-tooltip id="example7" position="left" open>
+            position: left
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example7" position="left-top" open>
+            position: left-top
+          </hx-tooltip>
+        </td>
+        <td>
+          <hx-tooltip id="example8" position="left-bottom" open>
+            position: left-bottom
+          </hx-tooltip>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2 class="hxSectionTitle" id="properties">Properties</h2>
+  <dl>
+    <dt>
+      open
+      <small>(Boolean [false])</small>
+    </dt>
+    <dd>Determines whether or not tooltip is shown</dd>
+    <dt>
+      position
+      <small>(String [bottom-right])</small>
+    </dt>
+    <dd>Determines where tooltip is positioned</dd>
+    <dt>
+      trigger
+      <small>(String [hover])</small>
+    </dt>
+    <dd>
+      Determines what fires the tooltip
+      possible values:
+      <ul>
+        <li>click</li>
+        <li>hover</li>
+      </ul>
+    </dd>
+  </dl>
+</section>
 {% endblock %}
+

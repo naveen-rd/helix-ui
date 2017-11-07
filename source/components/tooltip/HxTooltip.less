@@ -1,0 +1,35 @@
+@import 'vars';
+@import 'position';
+@import 'typography/typography';
+
+@tooltip-background-color: @gray-0;
+@tooltip-border-color: @gray-300;
+@tooltip-shadow-color: fade(@gray-900, 16%);
+
+:host {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: @tooltip-background-color;
+    border-color: @tooltip-border-color;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0px 3px 3px 0 @tooltip-shadow-color;
+    padding: 1.25rem; //20px
+    max-width: 25rem; //400px
+    min-width: 1rem;
+    z-index: 1000;
+    &([open]) {
+        display: block;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
