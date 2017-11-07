@@ -1,0 +1,44 @@
+@import "../HxElement";
+@import 'position';
+
+@popover-background-color: @gray-0;
+@popover-border-color: @gray-300;
+@popover-shadow-color: fade(@gray-900, 16%);
+
+:host {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: @popover-background-color;
+  border-color: @popover-border-color;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0px 3px 3px 0 @popover-shadow-color;
+  padding: 1.25rem;
+  max-height: 31.25rem; //500px
+  max-width: 31.25rem; //500px
+  min-width: 20rem;
+  z-index: 1000;
+
+  &([open]) {
+    display: block;
+  }
+}
+
+:host {
+  color: initial;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}
