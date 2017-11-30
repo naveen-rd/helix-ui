@@ -33,4 +33,4 @@ function calculateXOffset (position, offsetElementRect, targetElementRect) {
     return getOffsetEquationMap()[position].x(offsetElementRect, targetElementRect);
 }
 
-export { getOffsetsObject }
+export { getOffsetsObject };

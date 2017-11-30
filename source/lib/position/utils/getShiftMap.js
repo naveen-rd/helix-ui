@@ -34,7 +34,7 @@ function getShiftMap () {
             [POSITION.BOTTOM_RIGHT]: POSITION.BOTTOM_LEFT,
             [POSITION.BOTTOM_LEFT]: POSITION.BOTTOM_RIGHT,
         },
-    }
+    };
 }
 
-export { getShiftMap }
+export { getShiftMap };

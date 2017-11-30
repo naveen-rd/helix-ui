@@ -19,4 +19,4 @@ function reposition (position, offscreen) {
     return position;
 }
 
-export { reposition }
+export { reposition };

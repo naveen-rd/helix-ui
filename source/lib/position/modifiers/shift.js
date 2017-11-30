@@ -10,4 +10,4 @@ function shift (orientation, position) {
     return getShiftMap()[orientation][position];
 }
 
-export { shift }
+export { shift };

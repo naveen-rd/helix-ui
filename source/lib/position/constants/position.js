@@ -11,6 +11,6 @@ const POSITION = {
     LEFT: 'left',
     LEFT_TOP:'left-top',
     LEFT_BOTTOM:'left-bottom',
-}
+};
 
-export { POSITION }
+export { POSITION };

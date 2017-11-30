@@ -29,4 +29,4 @@ function getOffsets (offsetElement, targetElement, position = POSITION.BOTTOM_RI
     return offsets;
 }
 
-export { getOffsets }
+export { getOffsets };

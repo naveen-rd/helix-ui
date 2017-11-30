@@ -54,7 +54,7 @@ function getOffsetEquationMap () {
             'y': bottomHorizontal,
             'x': leftHorizontal,
         },
-    }
+    };
 }
 
 function middleVertical (offsetElementRect, targetElementRect) {
@@ -123,4 +123,4 @@ function leftHorizontal (offsetElementRect, targetElementRect) {
         ARROW.HEIGHT;
 }
 
-export { getOffsetEquationMap }
+export { getOffsetEquationMap };

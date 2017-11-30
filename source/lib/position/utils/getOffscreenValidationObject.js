@@ -16,4 +16,4 @@ function getOffScreenValidationObject (element, offsets) {
     return obj;
 }
 
-export { getOffScreenValidationObject }
+export { getOffScreenValidationObject };

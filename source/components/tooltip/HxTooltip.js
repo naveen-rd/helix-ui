@@ -1,5 +1,5 @@
-import { Position } from '../../lib/position'
-import debounce from 'lodash/debounce'
+import { Position } from '../../lib/position';
+import debounce from 'lodash/debounce';
 
 window.addEventListener('WebComponentsReady', function () {
     const tagName = 'hx-tooltip';
@@ -15,7 +15,7 @@ window.addEventListener('WebComponentsReady', function () {
         }
 
         static get observedAttributes () {
-            return ['open','position','trigger'];
+            return [ 'open' ];
         }
 
         constructor () {
@@ -26,7 +26,7 @@ window.addEventListener('WebComponentsReady', function () {
                 ShadyCSS.styleElement(this);
             }
             this.shadowRoot.appendChild(template.content.cloneNode(true));
-            this.initialPosition = this.position
+            this.initialPosition = this.position;
             this._show = this._show.bind(this);
             this._hide = this._hide.bind(this);
             this._toggle = this._toggle.bind(this);
@@ -36,21 +36,25 @@ window.addEventListener('WebComponentsReady', function () {
 
         connectedCallback () {
             this._target = document.querySelector('[data-tooltip=' + this.id + ']');
-            if (!this.hasAttribute('role')) {this.setAttribute('role', 'tooltip');}
-            if (!this._target) {return;}
-            this._connectHandlers()
+            if (!this.hasAttribute('role')) {
+                this.setAttribute('role', 'tooltip');
+            }
+            if (!this._target) {
+                return;
+            }
+            this._connectHandlers();
         }
 
         disconnectedCallback () {
-            if (!this._target) {return;}
-            this._destoryAllHandlers()
+            if (!this._target) {
+                return;
+            }
+            this._destoryAllHandlers();
         }
 
         attributeChangedCallback (attr, oldValue, newValue) {
-            switch (attr) {
-                case 'open':
-                    this.setAttribute('aria-hidden', newValue !== '');
-                    break;
+            if (attr === 'open') {
+                this.setAttribute('aria-hidden', newValue !== '');
             }
         }
 
@@ -58,8 +62,10 @@ window.addEventListener('WebComponentsReady', function () {
             if (this._showTimer) {
                 clearTimeout(this._showTimer);
             }
-            this._hideTimer = setTimeout(() => { this.open = false;}, 1600);
-            this.position = this.initialPosition
+            this._hideTimer = setTimeout(() => {
+                this.open = false;
+            }, 1600);
+            this.position = this.initialPosition;
         }
 
         _show () {
@@ -68,13 +74,17 @@ window.addEventListener('WebComponentsReady', function () {
             }
             this._showTimer = setTimeout(() => {
                 this.open = true;
-                this._setPosition()
+                this._setPosition();
             }, 500);
         }
 
         _toggle () {
             this.open = !this.open;
-            if (this.open) {this._setPosition()} else {this.position = this.initialPosition}
+            if (this.open) {
+                this._setPosition();
+            } else {
+                this.position = this.initialPosition;
+            }
         }
 
         _reposition () {
@@ -82,7 +92,7 @@ window.addEventListener('WebComponentsReady', function () {
                 this._setPosition();
             }
         }
-        
+
         _closeOnBackgroundClick (event) {
             if (this._isBackground(event)) {
                 this.open = false;
@@ -91,9 +101,9 @@ window.addEventListener('WebComponentsReady', function () {
 
         _connectHandlers () {
             if (this.trigger === 'click') {
-                this._addClickHandlers()
+                this._addClickHandlers();
             } else {
-                this._addHoverHandlers()
+                this._addHoverHandlers();
             }
         }
 
@@ -126,16 +136,16 @@ window.addEventListener('WebComponentsReady', function () {
             var offset = Position.getOffsets(this,this._target,this.position);
             this.style.top = offset.y + 'px';
             this.style.left = offset.x + 'px';
-            this.position = offset.position
+            this.position = offset.position;
         }
 
         _isBackground (event) {
-            let clickedTarget = event.target === this._target || 
-                event.target.parentElement === this._target   || 
-                event.target.parentElement.parentElement === this._target
-            let parentIsNotTagName = !event.target.closest(tagName)
+            let clickedTarget = event.target === this._target ||
+                event.target.parentElement === this._target   ||
+                event.target.parentElement.parentElement === this._target;
+            let parentIsNotTagName = !event.target.closest(tagName);
 
-            return (!clickedTarget && parentIsNotTagName)
+            return (!clickedTarget && parentIsNotTagName);
         }
 
         set position (value) {
@@ -147,7 +157,7 @@ window.addEventListener('WebComponentsReady', function () {
         }
 
         get position () {
-            return this.getAttribute('position')
+            return this.getAttribute('position');
         }
 
         set trigger (value) {
@@ -175,5 +185,5 @@ window.addEventListener('WebComponentsReady', function () {
         }
 
     }
-    customElements.define(HxTooltip.is, HxTooltip)
-})
+    customElements.define(HxTooltip.is, HxTooltip);
+});
