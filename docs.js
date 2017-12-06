@@ -60,28 +60,70 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 71);
+/******/ 	return __webpack_require__(__webpack_require__.s = 72);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 71:
+/***/ 72:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+__webpack_require__(73);
+
+__webpack_require__(74);
 
 /* ====================================== *\
  * DO NOT INCLUDE IN DISTRIBUTED ASSETS!! *
 \* ====================================== */
 
 // Demonstrate BS3 Tooltips
-
 $(function () {
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
 });
+
+/***/ }),
+
+/***/ 73:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (document.getElementById('vue-boxDemo')) {
+    new Vue({
+        el: '#vue-boxDemo',
+        data: {
+            size: {
+                label: 'Medium',
+                value: 'hxBox-md'
+            },
+            sizes: [{ value: 'hxBox-xs', label: 'Extra Small' }, { value: 'hxBox-sm', label: 'Small' }, { value: 'hxBox-md', label: 'Medium' }, { value: 'hxBox-lg', label: 'Large' }, { value: 'hxBox-xl', label: 'Extra Large' }]
+        }
+    });
+}
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (document.getElementById('vue-panelDemo')) {
+    new Vue({
+        el: '#vue-panelDemo',
+        data: {
+            hasHead: true,
+            hasFoot: true
+        }
+    });
+}
 
 /***/ })
 

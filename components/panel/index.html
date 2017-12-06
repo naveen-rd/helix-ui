@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Popover - HelixUI</title>
+  <title>Panel - HelixUI</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/helix-ui/">
@@ -33,7 +33,7 @@
     <main class="hxApp__content">
   <article>
     <h1 class="hxPageTitle">
-      Popover
+      Panel
     </h1>
 
     <div class="hxRow">
@@ -48,13 +48,103 @@
 
 <aside class="article-toc" role="navigation">
   <header class="article-toc-title">Content</header>
-  <p><em>Unavailable</em></p>
+  
+        <ul class="toc">
+            <li class="toc__item">
+                <a
+                    class="toc__link"
+                    onclick="document.location.hash='summary';">
+
+                    <span class="toc__text">Summary</span>
+                </a>
+            </li>
+        
+            <li class="toc__item">
+                <a
+                    class="toc__link"
+                    onclick="document.location.hash='demo';">
+
+                    <span class="toc__text">Demo</span>
+                </a>
+            </li>
+        </ul>
+        <a
+            class="toc__top-link"
+            onclick="document.location.hash='top'">
+
+            Back to Top
+        </a>
+    
 </aside>
       </div>
       <div class="hxCol hxSpan-12-xs hxSpan-9-md hxOrder-1-md">
-<!-- explanation goes here -->
-<p>TBD</p>
-
+  <section>
+    <h2 class="hxSectionTitle" id="summary">Summary</h2>
+    <p>
+      A panel is a utility for sectioning content vertically into a head,
+      body, and foot.
+    </p>
+    <ul>
+      <li>The head is fixed to the top of the panel.</li>
+      <li>The foot is fixed to the bottom of the panel.</li>
+      <li>The body fills the space in the middle.</li>
+    </ul>
+  </section>
+  <section id="vue-panelDemo">
+    <h2 class="hxSectionTitle" id="demo">Demo</h2>
+    <div class="hxRow">
+      <div class="hxCol hxSpan-12-xs hxSpan-8-md">
+        <div class="demo panel-demo">
+          <hx-panel>
+            <hx-panelhead v-if="hasHead">Panel Head</hx-panelhead>
+            <hx-panelbody>
+              <p>Panel Body</p>
+              <p>
+                Try to decide the branch off team, maybe it will help spike the MVP
+                interfaces. If we practice between the tasks, we can get the technical
+                application like the VOC branching. The best way to document acceptance
+                impediment is to periodically build their meeting. It was discovered
+                that by efficiently releasing the MVP products, we can practice the
+                lean XP development team in the minor board.
+              </p>
+            </hx-panelbody>
+            <hx-panelfoot v-if="hasFoot">Panel Foot</hx-panelfoot>
+          </hx-panel>
+        </div>
+        <span class="hxCaption">
+          *Visual styling added for demonstration purposes.
+        </span>
+      </div>
+      <div class="hxCol hxSpan-12-xs hxSpan-4-md">
+        <hx-panel>
+          <hx-panelhead>
+            <p>
+              Resize the demo to see how the panel reacts.
+            </p>
+          </hx-panelhead>
+          <hx-panelbody class="hxBox-md">
+            <p>
+              <label>
+                <input type="checkbox" v-model="hasHead" />
+                Show Head
+              </label>
+              <br />
+              <label>
+                <input type="checkbox" v-model="hasFoot" />
+                Show Foot
+              </label>
+            </p>
+          </hx-panelbody>
+        </hx-panel>
+      </div>
+    </div>
+    <br />
+<pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">hx-panel</span>&gt;</span>
+  [<span class="hljs-tag">&lt;<span class="hljs-name">hx-panelhead</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hx-panelhead</span>&gt;</span>]
+  <span class="hljs-tag">&lt;<span class="hljs-name">hx-panelbody</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hx-panelbody</span>&gt;</span>
+  [<span class="hljs-tag">&lt;<span class="hljs-name">hx-panelfoot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hx-panelfoot</span>&gt;</span>]
+<span class="hljs-tag">&lt;/<span class="hljs-name">hx-panel</span>&gt;</span>
+</code></pre>  </section>
       </div>
     </div>
   </article>
@@ -100,9 +190,9 @@
         <a href="components/navigation"
         >Navigation</a>
         <a href="components/panel"
-        >Panel</a>
+class="current"        >Panel</a>
         <a href="components/popover"
-class="current"        >Popover</a>
+        >Popover</a>
         <a href="components/reveal"
         >Reveal</a>
         <a href="components/status-label"
